@@ -20,6 +20,6 @@ from home.views import home_page
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home_page, name='home')
+    path('ai', home_page, name='home')
     # path('', include('home.urls')),
 ]
