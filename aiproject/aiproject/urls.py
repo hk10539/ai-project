@@ -16,10 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from home.views import home_page
+from home.views import metadata, pdf_length, readdata
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('ai', home_page, name='home')
+    path('pdf_length', pdf_length, name='pdf_length'),
+    path('metadata', metadata, name='metadata'),
+    path('readdata', readdata, name='readdata')
     # path('', include('home.urls')),
 ]
