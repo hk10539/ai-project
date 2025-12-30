@@ -1,28 +1,21 @@
-"""
-URL configuration for aiproject project.
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/6.0/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
-from django.urls import path,include
-from home.views import metadata, pdf_length, readdata
+from django.urls import path
 
+from home.views import (
+    pdf_length,
+    metadata,
+    readdata,
+    build_faiss_index,
+    semantic_search
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('pdf_length', pdf_length, name='pdf_length'),
-    path('metadata', metadata, name='metadata'),
-    path('readdata', readdata, name='readdata')
-    # path('', include('home.urls')),
+
+    path('api/pdf-length/', pdf_length),
+    path('api/metadata/', metadata),
+    path('api/read-data/', readdata),
+
+    path('api/faiss/build/', build_faiss_index),
+    path('api/faiss/search/', semantic_search),
 ]
